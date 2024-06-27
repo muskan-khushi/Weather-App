@@ -12,8 +12,9 @@
         <div class="search">
             <input type="text" placeholder="Enter city name:" spellcheck="false">
             <button> <img src = "images/search.png"></button>
+        </div>
 
-            <div class="error">Invalid City Name</div>
+            <div class="error"><p>Invalid City Name</p></div>
             
         
         <div class="weather">
@@ -43,14 +44,15 @@
     <script> 
       
      const apiKey = "ddde5b7b5d2a3d00042f6023b89f99ec";
-     const apiUrl = "https://api.openweathermap.org/data/2.5/weather?lat=&lon=&units=metric";
+     //const apiUrl = "https://api.openweathermap.org/data/2.5/weather?lat=&on=&units=metric";
+     const apiUrl = "https://api.openweathermap.org/data/2.5/weather?units=metric&q="
 
      const searchBox = document.querySelector(".search input");
      const searchBtn = document.querySelector(".search button");
      const weatherIcon = document.querySelector(".weather-icon")
 
-     async function checkWeather(lat,long){
-        const response = await fetch(apiUrl + lat + long + `&appid=${apiKey}`);
+     async function checkWeather(name){
+        const response = await fetch(apiUrl + name + `&appid=${apiKey}`);
 
         if (response.status == 404){
             document.querySelector(".error").style.display = "block";
